@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- Bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+      crossorigin="anonymous"
+    />
+    <!--fontawesome -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <div class="container" id="weatherContainer">
+      <h1>Weather Dashboard</h1>
+      <div class="row" id="weatherRow">
+        <div class="col-sm-4">
+
+          <form id="city-form">
+            <label for="cityName">Search for a city:</label><br/>
+            <input type="text" id="cityName" required />
+
+            <!-- Button triggers new city to be added -->
+            <button id="search-city" type="submit" class="btn btn-primary">
+              <i class="fa fa-search"></i>
+            </button>
+            <br/>
+            <!-- Saved Search Buttons  -->
+            <div class="btn-group-vertical" id="city-list">
+
+            </div>
+          
+          </form>
+        </div>
+        <!-- Displays Current City Weather -->
+        <div class="col-sm-8">
+          <div class="card" id="currentCityWeather">
+          </div>
+        </div>
+        
+      </div>
+    </div>
+
+    <!-- jQuery JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
