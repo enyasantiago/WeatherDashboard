@@ -55,7 +55,7 @@ $("#city-form").on("submit", function (event) {
   var queryURL = buildQueryURL(city);
   inputForm.val("");
   var cityList = $('#city-list');
-  var cityElement = $(`<button type="button" class="btn btn-outline-secondary" id="cityElement" value = ${city}>`).text(city);
+  var cityElement = $(`<li class="list-group-item" id="cityElement" value = ${city}>`).text(city);
   cityList.append(cityElement);
   var searchHistory = JSON.parse(localStorage.getItem("searchHistory"));
     if (!searchHistory) {
