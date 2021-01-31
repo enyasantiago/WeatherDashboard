@@ -128,28 +128,22 @@ function updatePage(weatherData) {
     currentDisplay(weatherConditions);
   }
   function currentDisplay() {
-    const container = $('#weatherContainer');
-    const row = $('#weatherRow');
     const currentCityWeather = $('#currentCityWeather');
-    
-    
-    const cityDisplay = $('<h1 id="cityDisplay">');
+    const cityDisplay = $('<h3 id="cityDisplay">');
     const tempDisplay = $('<p id="tempDisplay">');
     const humidityDisplay = $('<p id="humidityDisplay">');;
     const windSpeedDisplay = $('<p id="windSpeedDisplay">');
-    const uvIndexLabelDisplay = $('<p id="uvIndexLabelDisplay>');
-    const uvIndexDisplay = $(`<p id="uvIndexDisplay" class="btn btn-${weatherConditions}"> `);
-    
-   
+    const uvIndexLabelDisplay = $(`<p id="uvIndexLabelDisplay">`);
+    const uvIndexDisplay = $(`<span id="uvIndexDisplay" class="btn btn-${weatherConditions}">`);
+  
     currentCityWeather.append(cityDisplay, tempDisplay, humidityDisplay, windSpeedDisplay, uvIndexLabelDisplay, uvIndexDisplay);
-    row.append(currentCityWeather);
-    container.append(row);
+  
 
     cityDisplay.text(`${cityName} ${cityDate}`);
     tempDisplay.text(`Temperature ${temp}`);
     humidityDisplay.text(`Humidity ${humidity}`);
     windSpeedDisplay.text(`Wind Speed ${windSpeed}`);
-    uvIndexLabelDisplay.text("UV Index ");
+    uvIndexLabelDisplay.text(`UV Index `);
     uvIndexDisplay.text(`${uvIndex}`);
     //insert if statement for css change in background for UV Index
   }
