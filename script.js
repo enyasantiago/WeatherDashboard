@@ -65,17 +65,23 @@ $("#city-form").on("submit", function (event) {
       searchHistory [q] = city;
       localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
     }
+    // Make the AJAX request to the API - GETs the JSON data at the queryURL.
+    // The data then gets passed as an argument to the updatePage function
+    $.ajax({
+      url: queryURL,
+      method: "GET",
+    }).then(updatePage);
       
-    
+    var queryForecastURL = buildQueryURL (city,"forecast");
+    console.log (queryForecastURL);
+    $.ajax({
+      url: queryForecastURL,
+      method: "GET",
+    }).then(updateForecast);
   
 
 
-  // Make the AJAX request to the API - GETs the JSON data at the queryURL.
-  // The data then gets passed as an argument to the updatePage function
-  $.ajax({
-    url: queryURL,
-    method: "GET",
-  }).then(updatePage);
+
 });
 
 var cityName = "";
@@ -145,10 +151,14 @@ function updatePage(weatherData) {
     windSpeedDisplay.text(`Wind Speed ${windSpeed}`);
     uvIndexLabelDisplay.text(`UV Index `);
     uvIndexDisplay.text(`${uvIndex}`);
-    //insert if statement for css change in background for UV Index
+    //display forecast
   }
-
-
+  
+  
+  
+}
+function updateForecast (forecastData){
+  console.log (forecastData);
 }
 $("#cityElement").on("click", function (event){
   var savedCityName = $(this).val();
