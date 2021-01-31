@@ -86,6 +86,7 @@ $("#city-form").on("submit", function (event) {
 
 var cityName = "";
 var cityDate = "";
+var currIcon = "";
 var temp = "";
 var humidity = "";
 var windSpeed = "";
@@ -98,6 +99,7 @@ function updatePage(weatherData) {
   console.log(weatherData);
   
   cityName = weatherData.name;
+  currIcon = weatherData.weather[0].icon
   cityDate = weatherData.dt;
   cityDate = moment().format("MMMM D, YYYY");
   
@@ -117,7 +119,7 @@ function updatePage(weatherData) {
   }).then(setUvIndex);
   
   function setUvIndex(uvData){
-    //console.log (uvData)
+    
     uvIndex = uvData.value;
     if (uvIndex < 3) {
       //makes background green for favorable
@@ -136,41 +138,33 @@ function updatePage(weatherData) {
   function currentDisplay() {
     const currentCityWeather = $('#currentCityWeather');
     const cityDisplay = $('<h3 id="cityDisplay">');
+    const currIconDisplay = $('<img id="currIconDisplay" alt="icon">');
     const tempDisplay = $('<p id="tempDisplay">');
     const humidityDisplay = $('<p id="humidityDisplay">');
     const windSpeedDisplay = $('<p id="windSpeedDisplay">');
     const uvIndexLabelDisplay = $(`<p id="uvIndexLabelDisplay">`);
     const uvIndexDisplay = $(`<span id="uvIndexDisplay" class="btn btn-${weatherConditions}">`);
   
-    currentCityWeather.append(cityDisplay, tempDisplay, humidityDisplay, windSpeedDisplay, uvIndexLabelDisplay, uvIndexDisplay);
-  
+    currentCityWeather.append(cityDisplay, currIconDisplay, tempDisplay, humidityDisplay, windSpeedDisplay, uvIndexLabelDisplay, uvIndexDisplay);
+   
 
+    currIconURL = `http://openweathermap.org/img/wn/${currIcon}@2x.png`;
+    $("#currIconDisplay").attr("src", currIconURL);
     cityDisplay.text(`${cityName} ${cityDate}`);
     tempDisplay.text(`Temperature ${temp}`);
     humidityDisplay.text(`Humidity ${humidity}`);
     windSpeedDisplay.text(`Wind Speed ${windSpeed}`);
     uvIndexLabelDisplay.text(`UV Index `);
     uvIndexDisplay.text(`${uvIndex}`);
-    //display forecast
   }
   
   
   
 }
+//display forecast
 function updateForecast (forecastData){
   console.log (forecastData);
-  // <div class="card bg-primary bg-gradient" id="fiveDayForecast">
-  //             <div class="card-body" id="fcBody"></div>
-  // var fcCard = $('<div class="card bg-primary bg-gradient" id="fiveDayForecast">');
-  // var fcBody = $('<div class="card bg-primary bg-gradient" id="fiveDayForecast">');
-  // var fcDate = $('<p class="card-text id="forecastDate">');
-  // var fcIcon = $('<img id="icon" src="" alt="Weather icon">');
-  // var fcTemp = $('<p class="card-text id="forecastTemp">');
-  // var fcHumidity = $('<p id="forecastHumidity">');
-  // var fiveDayForecast = $('#fcGroup');
-  // fiveDayForecast.append(fcDate, fcIcon, fcTemp, fcHumidity);
-  // fcBody.append(fcCard);
-  // fcBody.append(fcCard)
+  
   var fcCard = "";
   var fcBody = "";
   var fcDate = "";
@@ -180,8 +174,9 @@ function updateForecast (forecastData){
   var fiveDayForecast = $('#fcGroup');
   
   for (var i = 0; i < 40; i = i+8 ) {
+    
     fcCard = $('<div class="card bg-primary bg-gradient" id="fiveDayForecast">');
-    fcIcon = $('<img id="icon" src="" alt="Weather icon">');
+    fcIcon = $('<img id="icon" alt="icon">');
     fcBody = $('<div class="card-body" id="fiveDayForecast">');
     fcDate = $('<p class="card-text id="forecastDate">');
     fcTemp = $('<p class="card-text id="forecastTemp">');
@@ -189,27 +184,20 @@ function updateForecast (forecastData){
     fcBody.append(fcDate, fcIcon, fcTemp, fcHumidity);
     fcCard.append(fcBody);
     fiveDayForecast.append(fcCard);
-    
+   
     forecastDate = (forecastData.list[i].dt_txt);
     forecastIcon = (forecastData.list[i].weather[0].icon);
     forecastTemp = (forecastData.list[i].main.temp);
     forecastHumidity = (forecastData.list[i].main.humidity);
-  
-    iconURL = (`http://openweathermap.org/img/w/${forecastIcon}.png`);
-    $("#icon").attr('src="iconURL"');
-
-    console.log (forecastIcon);
-    console.log (forecastDate);
-    console.log (forecastTemp);
-    console.log (forecastHumidity);
     
+    iconURL = `http://openweathermap.org/img/wn/${forecastIcon}@2x.png`;
+    console.log(iconURL);
+    $("#icon").attr("src", iconURL);
+
     fcDate.text(forecastDate);
-    fcTemp.text(`Temp: ${forecastTemp} &#8457 F`);
-    fcHumidity.text(`Humidity: ${forecastHumidity}`);
-    
-}
-
-  
+    fcTemp.text(`Temp: ${forecastTemp} F`);
+    fcHumidity.text(`Humidity: ${forecastHumidity}`);  
+  }  
 }
 $("#cityElement").on("click", function (event){
   var savedCityName = $(this).val();

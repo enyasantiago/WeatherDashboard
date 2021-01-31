@@ -1,3 +1,25 @@
 .card-group {
     display: flex;
 }
+#fiveDayForecast{
+    margin: 7px;
+    border-radius: 4%;
+}
+#currentCityWeather {
+    padding: 40px;
+    border-color: lightgray;
+    border-style: solid;
+    border-radius: 2%; 
+    border-width: 1px;
+    margin: 10px;
+}
+#wdHeader{
+    background-color: aliceblue;
+    text-align: center;
+}
+/* #cityElement{
+    margin: 20px;
+} */
+#city-form{
+    margin: 20px;
+}
