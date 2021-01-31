@@ -137,7 +137,7 @@ function updatePage(weatherData) {
     const currentCityWeather = $('#currentCityWeather');
     const cityDisplay = $('<h3 id="cityDisplay">');
     const tempDisplay = $('<p id="tempDisplay">');
-    const humidityDisplay = $('<p id="humidityDisplay">');;
+    const humidityDisplay = $('<p id="humidityDisplay">');
     const windSpeedDisplay = $('<p id="windSpeedDisplay">');
     const uvIndexLabelDisplay = $(`<p id="uvIndexLabelDisplay">`);
     const uvIndexDisplay = $(`<span id="uvIndexDisplay" class="btn btn-${weatherConditions}">`);
@@ -159,6 +159,57 @@ function updatePage(weatherData) {
 }
 function updateForecast (forecastData){
   console.log (forecastData);
+  // <div class="card bg-primary bg-gradient" id="fiveDayForecast">
+  //             <div class="card-body" id="fcBody"></div>
+  // var fcCard = $('<div class="card bg-primary bg-gradient" id="fiveDayForecast">');
+  // var fcBody = $('<div class="card bg-primary bg-gradient" id="fiveDayForecast">');
+  // var fcDate = $('<p class="card-text id="forecastDate">');
+  // var fcIcon = $('<img id="icon" src="" alt="Weather icon">');
+  // var fcTemp = $('<p class="card-text id="forecastTemp">');
+  // var fcHumidity = $('<p id="forecastHumidity">');
+  // var fiveDayForecast = $('#fcGroup');
+  // fiveDayForecast.append(fcDate, fcIcon, fcTemp, fcHumidity);
+  // fcBody.append(fcCard);
+  // fcBody.append(fcCard)
+  var fcCard = "";
+  var fcBody = "";
+  var fcDate = "";
+  var fcIcon = "";
+  var fcTemp = "";
+  var fcHumidity ="";
+  var fiveDayForecast = $('#fcGroup');
+  
+  for (var i = 0; i < 40; i = i+8 ) {
+    fcCard = $('<div class="card bg-primary bg-gradient" id="fiveDayForecast">');
+    fcIcon = $('<img id="icon" src="" alt="Weather icon">');
+    fcBody = $('<div class="card-body" id="fiveDayForecast">');
+    fcDate = $('<p class="card-text id="forecastDate">');
+    fcTemp = $('<p class="card-text id="forecastTemp">');
+    fcHumidity = $('<p id="forecastHumidity">');
+    fcBody.append(fcDate, fcIcon, fcTemp, fcHumidity);
+    fcCard.append(fcBody);
+    fiveDayForecast.append(fcCard);
+    
+    forecastDate = (forecastData.list[i].dt_txt);
+    forecastIcon = (forecastData.list[i].weather[0].icon);
+    forecastTemp = (forecastData.list[i].main.temp);
+    forecastHumidity = (forecastData.list[i].main.humidity);
+  
+    iconURL = (`http://openweathermap.org/img/w/${forecastIcon}.png`);
+    $("#icon").attr('src="iconURL"');
+
+    console.log (forecastIcon);
+    console.log (forecastDate);
+    console.log (forecastTemp);
+    console.log (forecastHumidity);
+    
+    fcDate.text(forecastDate);
+    fcTemp.text(`Temp: ${forecastTemp} &#8457 F`);
+    fcHumidity.text(`Humidity: ${forecastHumidity}`);
+    
+}
+
+  
 }
 $("#cityElement").on("click", function (event){
   var savedCityName = $(this).val();
