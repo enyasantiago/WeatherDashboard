@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Weather Dashboard</title>
     <!-- Bootstrap -->
     <link
       rel="stylesheet"
@@ -19,30 +19,39 @@
   </head>
   <body>
     <div class="container" id="weatherContainer">
-      <h1>Weather Dashboard</h1>
+      <div class=row>
+        <h2>Weather Dashboard</h2>
+      </div>
+      
       <div class="row" id="weatherRow">
         <div class="col-sm-4">
 
           <form id="city-form">
             <label for="cityName">Search for a city:</label><br/>
             <input type="text" id="cityName" required />
-
             <!-- Button triggers new city to be added -->
             <button id="search-city" type="submit" class="btn btn-primary">
-              <i class="fa fa-search"></i>
+            <i class="fa fa-search"></i>
             </button>
             <br/>
             <!-- Saved Search Buttons  -->
             <div class="btn-group-vertical" id="city-list">
-
             </div>
-          
           </form>
         </div>
-        <!-- Displays Current City Weather -->
         <div class="col-sm-8">
-          <div class="card" id="currentCityWeather">
+          <div class="row">
+            <!-- Displays Current City Weather -->
+            <div class="card" id="currentCityWeather">
+
+            </div>
           </div>
+          <!-- Displays Current City Weather -->
+          <div class="row">
+
+          </div>
+
+          
         </div>
         
       </div>
@@ -51,6 +60,7 @@
     <!-- jQuery JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="script.js"></script>
   </body>
 </html>

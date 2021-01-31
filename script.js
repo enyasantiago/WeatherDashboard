@@ -79,6 +79,7 @@ $("#city-form").on("submit", function (event) {
 });
 
 var cityName = "";
+var cityDate = "";
 var temp = "";
 var humidity = "";
 var windSpeed = "";
@@ -88,14 +89,18 @@ var uvIndex = "";
 var weatherConditions = "";
 //function which diaplays current city weather info
 function updatePage(weatherData) {
-  //console.log(weatherData);
+  console.log(weatherData);
   
-  cityName = weatherData.name;;
+  cityName = weatherData.name;
+  cityDate = weatherData.dt;
+  cityDate = moment().format("MMMM D, YYYY");
+  
   temp = weatherData.main.temp;
   humidity = weatherData.main.humidity;
   windSpeed = weatherData.wind.speed;
   lat = weatherData.coord.lat;
   lon = weatherData.coord.lon;
+
   
   //Build UVI API
   //Make the AJAX request to the API
@@ -122,7 +127,7 @@ function updatePage(weatherData) {
     }
     currentDisplay(weatherConditions);
   }
-  function currentDisplay(weatherConditions) {
+  function currentDisplay() {
     const container = $('#weatherContainer');
     const row = $('#weatherRow');
     const currentCityWeather = $('#currentCityWeather');
@@ -135,15 +140,12 @@ function updatePage(weatherData) {
     const uvIndexLabelDisplay = $('<p id="uvIndexLabelDisplay>');
     const uvIndexDisplay = $(`<p id="uvIndexDisplay" class="btn btn-${weatherConditions}"> `);
     
-    console.log (weatherConditions);
-    console.log (uvIndexDisplay);
-    
    
     currentCityWeather.append(cityDisplay, tempDisplay, humidityDisplay, windSpeedDisplay, uvIndexLabelDisplay, uvIndexDisplay);
     row.append(currentCityWeather);
     container.append(row);
 
-    cityDisplay.text(cityName);
+    cityDisplay.text(`${cityName} ${cityDate}`);
     tempDisplay.text(`Temperature ${temp}`);
     humidityDisplay.text(`Humidity ${humidity}`);
     windSpeedDisplay.text(`Wind Speed ${windSpeed}`);
@@ -156,5 +158,6 @@ function updatePage(weatherData) {
 }
 $("#cityElement").on("click", function (event){
   var savedCityName = $(this).val();
+  console.log ("test");
   buildQueryURL(savedCityName);
 });
