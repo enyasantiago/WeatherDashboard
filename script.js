@@ -18,7 +18,7 @@ const inputForm = $("#cityName");
  * @returns {string} URL for Weather API based on form inputs
  */
 function buildQueryURL(city = "Houston", type = "weather") {
-  var baseURL = "http://api.openweathermap.org/data/2.5/";
+  var baseURL = "https://api.openweathermap.org/data/2.5/";
   baseURL += type;
 
   const params = {
@@ -104,7 +104,7 @@ function updatePage(weatherData) {
   
   //Build UVI API
   //Make the AJAX request to the API
-  var uviURL = `http://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&appid=1424a66e027bad341d5f8deb9f817274`;
+  var uviURL = `https://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&appid=1424a66e027bad341d5f8deb9f817274`;
   $.ajax({
     url: uviURL,
     method: "GET",
