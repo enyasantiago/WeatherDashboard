@@ -154,8 +154,8 @@ function updatePage(weatherData) {
   
     currentCityWeather.append(cityDisplay, currIconDisplay, tempDisplay, humidityDisplay, windSpeedDisplay, uvIndexLabelDisplay, uvIndexDisplay);
    
-
-    currIconURL = `http://openweathermap.org/img/wn/${currIcon}@2x.png`;
+    //displays current city weather
+    currIconURL = `https://openweathermap.org/img/wn/${currIcon}@2x.png`;
     $("#currIconDisplay").attr("src", currIconURL);
     cityDisplay.text(`${cityName} ${cityDate}`);
     tempDisplay.text(`Temperature ${temp}`);
