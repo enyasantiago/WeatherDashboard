@@ -190,10 +190,9 @@ function updateForecast (forecastData){
     forecastTemp = (forecastData.list[i].main.temp);
     forecastHumidity = (forecastData.list[i].main.humidity);
     
-    iconURL = `http://openweathermap.org/img/wn/${forecastIcon}@2x.png`;
+    iconURL = `https://openweathermap.org/img/wn/${forecastIcon}@2x.png`;
     console.log(iconURL);
     $("#icon").attr("src", iconURL);
-
     fcDate.text(forecastDate);
     fcTemp.text(`Temp: ${forecastTemp} F`);
     fcHumidity.text(`Humidity: ${forecastHumidity}`);  
