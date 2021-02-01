@@ -151,8 +151,8 @@ function updatePage(weatherData) {
     const windSpeedDisplay = $('<p id="windSpeedDisplay">');
     const uvIndexLabelDisplay = $(`<p id="uvIndexLabelDisplay">`);
     const uvIndexDisplay = $(`<span id="uvIndexDisplay" class="btn btn-${weatherConditions}">`);
-  
-    currentCityWeather.append(cityDisplay, currIconDisplay, tempDisplay, humidityDisplay, windSpeedDisplay, uvIndexLabelDisplay, uvIndexDisplay);
+    uvIndexLabelDisplay.append(uvIndexDisplay);
+    currentCityWeather.append(cityDisplay, currIconDisplay, tempDisplay, humidityDisplay, windSpeedDisplay, uvIndexLabelDisplay);
    
     //displays current city weather
     currIconURL = `https://openweathermap.org/img/wn/${currIcon}@2x.png`;
