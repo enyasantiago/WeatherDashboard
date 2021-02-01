@@ -56,15 +56,22 @@ $("#city-form").on("submit", function (event) {
   inputForm.val("");
   var cityList = $('#city-list');
   var cityElement = $(`<li class="list-group-item" id="cityElement" value = ${city}>`).text(city);
-  cityList.append(cityElement);
   var searchHistory = JSON.parse(localStorage.getItem("searchHistory"));
-    if (!searchHistory) {
-      searchHistory = [];
-    }
-    else {
-      searchHistory [q] = city;
-      localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
-    }
+  if (!searchHistory) {
+    searchHistory = [];
+    cityList.append(cityElement);
+  //checks to see if current searched city is in local storage.
+  //If not in local storage, add city to searchHistory and append city to search history list  
+  } else if (searchHistory[q].indexOf(city)) {
+    console.log(searchHistory);
+  } 
+  else {
+    searchHistory [q] = city;
+    localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+    cityList.append(cityElement);
+    
+  }
+
     // Make the AJAX request to the API - GETs the JSON data at the queryURL.
     // The data then gets passed as an argument to the updatePage function
     $.ajax({
@@ -184,7 +191,7 @@ function updateForecast (forecastData){
     fcBody.append(fcDate, fcIcon, fcTemp, fcHumidity);
     fcCard.append(fcBody);
     fiveDayForecast.append(fcCard);
-   
+    
     forecastDate = (forecastData.list[i].dt_txt);
     forecastIcon = (forecastData.list[i].weather[0].icon);
     forecastTemp = (forecastData.list[i].main.temp);
@@ -192,6 +199,7 @@ function updateForecast (forecastData){
     
     iconURL = `https://openweathermap.org/img/wn/${forecastIcon}@2x.png`;
     console.log(iconURL);
+    
     $("#icon").attr("src", iconURL);
     fcDate.text(forecastDate);
     fcTemp.text(`Temp: ${forecastTemp} F`);
