@@ -6,4 +6,5 @@ with city name, the date, an icon representation of weather conditions, the temp
 When a city is clicked in the search history, current and future conditions for that city are displayed.
 When the weather dashboard is opened,the last searched city forecast is displayed.
 [OpenWeather API](https://openweathermap.org/api) was used to retrieve weather data for cities. Visual Studio Code and Chrome were used to complete this project.
+![image](https://user-images.githubusercontent.com/15931465/106846294-9cf0c480-667a-11eb-87d9-aaac46ed3142.png)
 
