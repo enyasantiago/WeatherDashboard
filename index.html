@@ -21,47 +21,39 @@
   </head>
   <body>
     <div class="container-fluid" id="weatherContainer">
-      <div class=row id="wdHeader">
+      <div class="row" id="wdHeader">
         <h2>Weather Dashboard</h2>
       </div>
-      
+
       <div class="row" id="weatherRow">
         <div class="col-sm-4">
-
           <form id="city-form">
-            <label for="cityName">Search for a city:</label><br/>
-            <input type="text" id="cityName" required />
+            <label for="city-name">Search for a city:</label><br />
+            <input type="text" id="city-name" required />
             <!-- Button triggers new city to be added -->
             <button id="search-city" type="submit" class="btn btn-primary">
-            <i class="fa fa-search"></i>
+              <i class="fa fa-search"></i>
             </button>
-            
           </form>
-            <!-- Saved Search List  -->
-            <ol class="list-group" id="city-list">
-            </ol>
+          <!-- Saved Search List  -->
+          <ol class="list-group" id="city-list"></ol>
         </div>
+
         <div class="col-sm-8">
           <div class="card">
             <!-- Displays Current City Weather -->
             <div class="card-body" id="currentCityWeather">
 
+              <p>Temp: <span id="current_temp"></span></p>
+              <p>UVI: <span id="uvi_index"></span></p>
             </div>
           </div>
           <!-- Displays Current City 5 day forecast -->
-          <div class="card-group" id="fcGroup" >
+          <div class="card-group" id="fcGroup">
             <!-- <div class="card bg-primary bg-gradient" id="fiveDayForecast">
               <div class="card-body" id="fcBody"> -->
-          
-  
-
-              </div>
-
-            </div>
           </div>
-          
         </div>
-        
       </div>
     </div>
 
